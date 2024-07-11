@@ -4,9 +4,17 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "echo",
+            "label": "Compile TypeScript",
             "type": "shell",
-            "command": "echo Hello"
+            "command": "tsc",
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            }
         }
     ]
 }

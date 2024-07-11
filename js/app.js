@@ -1,3 +1,3 @@
 "use strict";
-let greeting = 'Hello TypeScript in watch mode!';
+let greeting = 'Hello TypeScript with new files!!!';
 console.log(greeting);

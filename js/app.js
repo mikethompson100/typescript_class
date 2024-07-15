@@ -7,12 +7,12 @@ function GetReview(title) {
         return Math.floor(Math.random() * 10);
     }
 }
-let movieTitle = 'A New Hopee';
-let movieReview = GetReview(movieTitle);
-console.log(`Movie title: ${movieTitle}`);
-if (typeof (movieReview) == 'string') {
-    console.log(`Review: ${movieReview}`);
+function PrintMovieInfo(title, yearReleased) {
+    console.log(`Title: ${title}`);
+    if (yearReleased) {
+        console.log(`Year Released: ${yearReleased}`);
+    }
 }
-else {
-    console.log(`Rating: ${movieReview}/10`);
-}
+PrintMovieInfo('A New Hope');
+PrintMovieInfo('A New Hope', 1977);
+'';

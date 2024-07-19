@@ -43,5 +43,8 @@ function GetTitles(director, streaming) {
     return searchResults;
 }
 ;
-let movies = GetTitles('George Lucas', false);
-movies.forEach(title => console.log(title));
+function createMovieID(name, id) {
+    return name + id;
+}
+let newID = createMovieID('jedi', 10);
+console.log(newID);

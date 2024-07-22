@@ -1,4 +1,5 @@
 "use strict";
+;
 function GetAllMovies() {
     return [
         { title: 'A New Hope', director: 'George Lucas', yearReleased: 1977, streaming: true },
@@ -13,14 +14,11 @@ function GetReview(title) {
         return Math.floor(Math.random() * 10);
     }
 }
-function PrintMovieInfo(title, yearReleased, ...cast) {
-    console.log(`Title: ${title}`);
-    if (yearReleased) {
-        console.log(`Year Released: ${yearReleased}`);
-    }
-    console.log('Cast:');
-    for (const name of cast) {
-        console.log(`- ${name}`);
+function PrintMovieInfo(movie) {
+    console.log(`Title: ${movie.title}`);
+    console.log(`Director: ${movie.director}`);
+    if (movie.yearReleased) {
+        console.log(`Year Released: ${movie.yearReleased}`);
     }
 }
 function GetTitles(director, streaming) {
@@ -48,3 +46,12 @@ function createMovieID(name, id) {
 }
 let newID = createMovieID('jedi', 10);
 console.log(newID);
+let myMovie = {
+    title: 'Outlaw Josie Wales',
+    director: 'Serge Leone',
+    yearReleased: 1978,
+    streaming: true,
+    genre: 'Western',
+    previouslyViewed: true
+};
+PrintMovieInfo(myMovie);

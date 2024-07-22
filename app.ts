@@ -1,4 +1,12 @@
-function GetAllMovies() {
+interface Movie {
+    title: string,
+    director: string,
+    yearReleased: number,
+    streaming: boolean
+};
+
+
+function GetAllMovies(): Movie[] {
     return [
         {title: 'A New Hope', director: 'George Lucas', yearReleased: 1977, streaming: true},
         {title: 'Tombstone', director: 'George Lucas', yearReleased: 1993, streaming: false}
@@ -13,18 +21,15 @@ function GetReview(title: string): string | number {
     }
 }
 
-function PrintMovieInfo(title: string, yearReleased: number, ...cast: string[]) {
+function PrintMovieInfo(movie: Movie) {
 
-    console.log(`Title: ${title}`);
+    console.log(`Title: ${movie.title}`);
+    console.log(`Director: ${movie.director}`);
 
-    if (yearReleased) {
-        console.log(`Year Released: ${yearReleased}`);
+    if (movie.yearReleased) {
+        console.log(`Year Released: ${movie.yearReleased}`);
     }
-    console.log('Cast:');
-
-    for (const name of cast){
-        console.log(`- ${name}`);
-    }
+    
 }
 
 //PrintMovieInfo('A New Hope');
@@ -60,5 +65,15 @@ function createMovieID(name: string, id: number): string {
 let newID: string = createMovieID('jedi', 10);
 console.log(newID);
 
+let myMovie = {
+    title: 'Outlaw Josie Wales',
+    director: 'Serge Leone',
+    yearReleased: 1978,
+    streaming: true,
+    genre: 'Western',
+    previouslyViewed: true
+};
+
+PrintMovieInfo(myMovie);
 
 

@@ -2,9 +2,14 @@ interface Movie {
     title: string,
     director: string,
     yearReleased: number,
-    streaming: boolean
+    streaming: boolean,
+    length?: number,
+    logReview?: ReviewLogger
 };
 
+interface ReviewLogger {
+    (review: string) : void;
+}
 
 function GetAllMovies(): Movie[] {
     return [
@@ -65,15 +70,18 @@ function createMovieID(name: string, id: number): string {
 let newID: string = createMovieID('jedi', 10);
 console.log(newID);
 
-let myMovie = {
+let myMovie: Movie = {
     title: 'Outlaw Josie Wales',
     director: 'Serge Leone',
     yearReleased: 1978,
     streaming: true,
-    genre: 'Western',
-    previouslyViewed: true
+    length: 133,
+    logReview: (review: string) => console.log(`Review: ${review}`)
 };
 
-PrintMovieInfo(myMovie);
+/* PrintMovieInfo(myMovie);
 
+if (myMovie.logReview) {
+    myMovie.logReview('Great epic!')
+} */
 

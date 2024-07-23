@@ -51,7 +51,10 @@ let myMovie = {
     director: 'Serge Leone',
     yearReleased: 1978,
     streaming: true,
-    genre: 'Western',
-    previouslyViewed: true
+    length: 133,
+    logReview: (review) => console.log(`Review: ${review}`)
 };
 PrintMovieInfo(myMovie);
+if (myMovie.logReview) {
+    myMovie.logReview('Great epic!');
+}

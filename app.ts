@@ -11,6 +11,21 @@ interface ReviewLogger {
     (review: string) : void;
 }
 
+interface Person {
+    name: string;
+    email: string;
+}
+
+interface Director extends Person {
+    numMoviesDirected: number;
+}
+
+interface CastMember extends Person {
+    role: string;
+    rehearse: (sceneNumber: number) => void;
+}
+
+
 function GetAllMovies(): Movie[] {
     return [
         {title: 'A New Hope', director: 'George Lucas', yearReleased: 1977, streaming: true},
@@ -84,4 +99,8 @@ let myMovie: Movie = {
 if (myMovie.logReview) {
     myMovie.logReview('Great epic!')
 } */
+
+let printReview: ReviewLogger;
+printReview = (review: string) => console.log(`Viewer review: ${review}`);
+printReview('I want to see it again!!!!!');
 

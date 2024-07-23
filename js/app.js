@@ -54,7 +54,11 @@ let myMovie = {
     length: 133,
     logReview: (review) => console.log(`Review: ${review}`)
 };
-PrintMovieInfo(myMovie);
+/* PrintMovieInfo(myMovie);
+
 if (myMovie.logReview) {
-    myMovie.logReview('Great epic!');
-}
+    myMovie.logReview('Great epic!')
+} */
+let printReview;
+printReview = (review) => console.log(`Viewer review: ${review}`);
+printReview('I want to see it again!!!!!');

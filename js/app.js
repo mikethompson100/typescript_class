@@ -1,5 +1,16 @@
 "use strict";
 ;
+class Performer {
+    constructor() {
+        this.name = "";
+        this.email = "";
+        this.role = "";
+    }
+    rehearse(sceneNumber) {
+        console.log(`${this.name} is rehearsing scene number ${sceneNumber}.`);
+    }
+    ;
+}
 function GetAllMovies() {
     return [
         { title: 'A New Hope', director: 'George Lucas', yearReleased: 1977, streaming: true },
@@ -62,3 +73,16 @@ if (myMovie.logReview) {
 let printReview;
 printReview = (review) => console.log(`Viewer review: ${review}`);
 printReview('I want to see it again!!!!!');
+let favoriteCastMember = new Performer();
+favoriteCastMember.name = 'Daisy';
+favoriteCastMember.rehearse(25);
+class Library {
+    constructor(name) {
+        this.name = name;
+    }
+}
+Library.description = 'A source of knowledge';
+let result = new Library('Michael');
+console.log(result.name);
+//console.log(result.description);
+console.log(Library.description);

@@ -25,6 +25,15 @@ interface CastMember extends Person {
     rehearse: (sceneNumber: number) => void;
 }
 
+class Performer implements CastMember {
+    name: string = "";
+    email: string = "";
+    role: string = "";
+    rehearse (sceneNumber: number) : void {
+        console.log(`${this.name} is rehearsing scene number ${sceneNumber}.`);
+    };
+}
+
 
 function GetAllMovies(): Movie[] {
     return [
@@ -103,4 +112,20 @@ if (myMovie.logReview) {
 let printReview: ReviewLogger;
 printReview = (review: string) => console.log(`Viewer review: ${review}`);
 printReview('I want to see it again!!!!!');
+
+
+let favoriteCastMember: CastMember = new Performer();
+favoriteCastMember.name = 'Daisy';
+favoriteCastMember.rehearse(25);
+
+class Library {
+    constructor(public name: string) {    }
+    static description: string = 'A source of knowledge';
+}
+
+let result = new Library('Michael');
+console.log(result.name);
+//console.log(result.description);
+console.log(Library.description);
+
 

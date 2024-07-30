@@ -86,3 +86,49 @@ let result = new Library('Michael');
 console.log(result.name);
 //console.log(result.description);
 console.log(Library.description);
+/*
+class Video {
+    title: string = '';
+    year: number = 2024;
+
+    constructor(){
+        console.log('Creating a new Video...');
+    }
+
+    printItem(): void {
+        console.log(`${this.title} was released in this year: ${this.year}`);
+    }
+
+};
+
+let vid = new Video();
+vid.title = 'A New Hope';
+vid.year = 1977;
+vid.printItem();
+ */
+class Video {
+    get producer() {
+        return this._producer.toUpperCase();
+    }
+    set producer(newProducer) {
+        this._producer = newProducer;
+    }
+    constructor(newTitle, newYear) {
+        this._producer = '';
+        this.title = '';
+        this.year = 2024;
+        console.log('Creating a new Video...');
+        this.title = newTitle;
+        this.year = newYear;
+    }
+    printItem() {
+        console.log(`${this.title} was released in this year: ${this.year}`);
+        console.log(`Medium: ${Video.medium}`);
+    }
+}
+Video.medium = 'Audio/Visual';
+;
+let vid = new Video('A New Hope', 1977);
+vid.printItem();
+vid.producer = "Sci Fi";
+console.log(vid.producer);

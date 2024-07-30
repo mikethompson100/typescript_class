@@ -128,4 +128,60 @@ console.log(result.name);
 //console.log(result.description);
 console.log(Library.description);
 
+/* 
+class Video {
+    title: string = '';
+    year: number = 2024;
 
+    constructor(){
+        console.log('Creating a new Video...');
+    }
+
+    printItem(): void {
+        console.log(`${this.title} was released in this year: ${this.year}`);
+    }
+
+};
+
+let vid = new Video();
+vid.title = 'A New Hope';
+vid.year = 1977;
+vid.printItem();
+ */
+
+
+
+class Video {
+
+    private _producer: string = '';
+    static medium: string = 'Audio/Visual';
+
+    get producer(): string {
+        return this._producer.toUpperCase();
+    }
+
+    set producer(newProducer:string) {
+        this._producer = newProducer;
+    }
+
+    title: string = '';
+    private year: number = 2024;
+
+    constructor(newTitle: string, newYear: number){
+        console.log('Creating a new Video...');
+        this.title = newTitle;
+        this.year = newYear;
+    }
+
+    printItem(): void {
+        console.log(`${this.title} was released in this year: ${this.year}`);
+        console.log(`Medium: ${Video.medium}`);
+    }
+
+};
+
+let vid = new Video('A New Hope', 1977);
+vid.printItem();
+
+vid.producer = "Sci Fi";
+console.log(vid.producer);

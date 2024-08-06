@@ -128,7 +128,11 @@ class Video {
 }
 Video.medium = 'Audio/Visual';
 ;
-let vid = new Video('A New Hope', 1977);
+class Documentary extends Video {
+    constructor(newTitle, newYear, subject) {
+        super(newTitle, newYear);
+        this.subject = subject;
+    }
+}
+let vid = new Documentary("How the Outlaws Started at WSAM", 2024, "Film history");
 vid.printItem();
-vid.producer = "Sci Fi";
-console.log(vid.producer);

@@ -180,8 +180,12 @@ class Video {
 
 };
 
-let vid = new Video('A New Hope', 1977);
-vid.printItem();
+class Documentary extends Video {
 
-vid.producer = "Sci Fi";
-console.log(vid.producer);
+    constructor(newTitle: string, newYear: number, public subject: string) {
+        super(newTitle, newYear);
+    }
+}
+
+let vid = new Documentary("How the Outlaws Started at WSAM", 2024, "Film history");
+vid.printItem();

@@ -133,6 +133,14 @@ class Documentary extends Video {
         super(newTitle, newYear);
         this.subject = subject;
     }
+    printItem() {
+        super.printItem();
+        console.log(`Subject: ${this.subject} (${this.year})`);
+    }
+    printCredits() {
+        console.log(`Producer: ${this.producer}`);
+    }
 }
 let vid = new Documentary("How the Outlaws Started at WSAM", 2024, "Film history");
-vid.printItem();
+vid.producer = 'Sci-Fi Pictures';
+vid.printCredits();

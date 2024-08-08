@@ -151,7 +151,7 @@ vid.printItem();
 
 
 
-class Video {
+abstract class Video {
 
     private _producer: string = '';
     static medium: string = 'Audio/Visual';
@@ -165,7 +165,7 @@ class Video {
     }
 
     title: string = '';
-    private year: number = 2024;
+    year: number = 2024;
 
     constructor(newTitle: string, newYear: number){
         console.log('Creating a new Video...');
@@ -177,6 +177,7 @@ class Video {
         console.log(`${this.title} was released in this year: ${this.year}`);
         console.log(`Medium: ${Video.medium}`);
     }
+    abstract printCredits(): void;
 
 };
 
@@ -185,7 +186,15 @@ class Documentary extends Video {
     constructor(newTitle: string, newYear: number, public subject: string) {
         super(newTitle, newYear);
     }
+    printItem(): void {
+        super.printItem();
+        console.log(`Subject: ${this.subject} (${this.year})`);
+    }
+    printCredits():void {
+        console.log(`Producer: ${this.producer}`)
+    }
 }
 
 let vid = new Documentary("How the Outlaws Started at WSAM", 2024, "Film history");
-vid.printItem();
+vid.producer = 'Sci-Fi Pictures';
+vid.printCredits();

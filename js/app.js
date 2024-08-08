@@ -141,6 +141,11 @@ class Documentary extends Video {
         console.log(`Producer: ${this.producer}`);
     }
 }
-let vid = new Documentary("How the Outlaws Started at WSAM", 2024, "Film history");
-vid.producer = 'Sci-Fi Pictures';
-vid.printCredits();
+let Musical = class extends Video {
+    printCredits() {
+        console.log(`Musical credits: ${this.producer}`);
+    }
+};
+let myMusical = new Musical('Grease', 1978);
+myMusical.producer = 'Sing-Song Pictures';
+myMusical.printCredits();

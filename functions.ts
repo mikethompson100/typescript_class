@@ -1,95 +1,54 @@
-import {Movie, Logger, CastMember as Actor} from "./interfaces";
-import  {Performer, Documentary} from "./classes";
+import { Movie } from "./interfaces";
 
 export function GetAllMovies(): Movie[] {
-    return [
-        {title: 'A New Hope', director: 'George Lucas', yearReleased: 1977, streaming: true},
-        {title: 'Tombstone', director: 'George Lucas', yearReleased: 1993, streaming: false}
-    ]
+  return [
+    { title: 'A New Hope', director: 'George Lucas', yearReleased: 1977, streaming: true },
+    { title: 'The Empire Strikes Back', director: 'Irvin Kershner', yearReleased: 1980, streaming: false },
+    { title: 'Return of the Jedi', director: 'Richard Marquand', yearReleased: 1983, streaming: true },
+    { title: 'The Phantom Menace', director: 'George Lucas', yearReleased: 1999, streaming: false },
+    { title: 'Attack of the Clones', director: 'George Lucas', yearReleased: 2002, streaming: true },
+    { title: 'Revenge of the Sith', director: 'George Lucas', yearReleased: 2005, streaming: true },
+    { title: 'The Force Awakens', director: 'J.J. Abrams', yearReleased: 2015, streaming: false },
+    { title: 'The Last Jedi', director: 'Rian Johnson', yearReleased: 2017, streaming: true },
+    { title: 'The Rise of Skywalker', director: 'J.J. Abrams', yearReleased: 2019, streaming: true }
+  ];
 }
 
 function GetReview(title: string): string | number {
-    if (title === 'A New Hope') {
-        return 'An instant classic!';
-    } else {
-        return Math.floor(Math.random() * 10);
-    }
+  if (title == 'A New Hope') {
+    return 'An instant classic!';
+  }
+  else {
+    return Math.floor(Math.random() * 10);
+  }
 }
 
 export function PrintMovieInfo(movie: Movie) {
 
-    console.log(`Title: ${movie.title}`);
-    console.log(`Director: ${movie.director}`);
-
-    if (movie.yearReleased) {
-        console.log(`Year Released: ${movie.yearReleased}`);
-    }
-    
+  console.log(`Title: ${movie.title}`);
+  console.log(`Year Released: ${movie.yearReleased}`);
+  console.log(`Director: ${movie.director}`);
 }
 
-//PrintMovieInfo('A New Hope');
-//PrintMovieInfo('A New Hope', 1977, "Mark Hamill", "Harrison Ford", "Carrie Fisher");
+export function GetTitles(director: string): string[];
+export function GetTitles(director: string, streaming: boolean): string[];
+export function GetTitles(director: string, streaming?: boolean): string[] {
+  const allMovies = GetAllMovies();
+  const searchResults: string[] = [];
 
-function GetTitles(director: string): string[];
-function GetTitles(director: string, streaming: boolean): string[];
-function GetTitles(director: string, streaming?: boolean): string[] {
-    const allMovies = GetAllMovies();
-    const searchResults: string[] = [];
-
-    if(streaming !== undefined) {
-        for(let movie of allMovies) {
-            if(movie.director === director && movie.streaming === streaming) {
-                searchResults.push(movie.title);
-            }
-        }
+  if(streaming !== undefined) {
+    for(let movie of allMovies) {
+      if(movie.director === director && movie.streaming === streaming) {
+        searchResults.push(movie.title);
+      }
     }
-    else {
-        for(let movie of allMovies) {
-            if(movie.director === director) {
-                searchResults.push(movie.title);
-            }
-        }
+  } else {
+    for(let movie of allMovies) {
+      if(movie.director === director) {
+        searchResults.push(movie.title);
+      }
     }
-    return searchResults;
-};
-
-function createMovieID(name: string, id: number): string {
-    return name + id;
+  }
+  return searchResults;    
 }
 
-let newID: string = createMovieID('jedi', 10);
-console.log(newID);
-
-let myMovie: Movie = {
-    title: 'Outlaw Josie Wales',
-    director: 'Serge Leone',
-    yearReleased: 1978,
-    streaming: true,
-    length: 133,
-    logReview: (review: string) => console.log(`Review: ${review}`)
-};
-
-/* PrintMovieInfo(myMovie);
-
-if (myMovie.logReview) {
-    myMovie.logReview('Great epic!')
-} */
-
-let printReview: Logger;
-printReview = (review: string) => console.log(`Viewer review: ${review}`);
-printReview('I want to see it again!!!!!');
-
-
-let favoriteCastMember: Actor = new Performer();
-favoriteCastMember.name = 'Daisy';
-favoriteCastMember.rehearse(25);
-
-class Library {
-    constructor(public name: string) {    }
-    static description: string = 'A source of knowledge';
-}
-
-let result = new Library('Michael');
-console.log(result.name);
-//console.log(result.description);
-console.log(Library.description);

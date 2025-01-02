@@ -10,7 +10,6 @@ class Performer {
     rehearse(sceneNumber) {
         console.log(`${this.name} is rehearsing scene number ${sceneNumber}.`);
     }
-    ;
 }
 exports.Performer = Performer;
 class Video {
@@ -20,21 +19,18 @@ class Video {
     set producer(newProducer) {
         this._producer = newProducer;
     }
-    constructor(newTitle, newYear) {
+    constructor(title, year) {
+        this.title = title;
+        this.year = year;
         this._producer = '';
-        this.title = '';
-        this.year = 2024;
         console.log('Creating a new Video...');
-        this.title = newTitle;
-        this.year = newYear;
     }
     printItem() {
-        console.log(`${this.title} was released in this year: ${this.year}`);
+        console.log(`${this.title} was released in ${this.year}.`);
         console.log(`Medium: ${Video.medium}`);
     }
 }
 Video.medium = 'Audio/Visual';
-;
 class Documentary extends Video {
     constructor(newTitle, newYear, subject) {
         super(newTitle, newYear);
@@ -66,6 +62,3 @@ class Course extends class {
     }
 }
 exports.Course = Course;
-let myMusical = new exports.Musical('Grease', 1978);
-myMusical.producer = 'Sing-Song Pictures';
-myMusical.printCredits();

@@ -2,15 +2,22 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetAllMovies = GetAllMovies;
 exports.PrintMovieInfo = PrintMovieInfo;
-const classes_1 = require("./classes");
+exports.GetTitles = GetTitles;
 function GetAllMovies() {
     return [
         { title: 'A New Hope', director: 'George Lucas', yearReleased: 1977, streaming: true },
-        { title: 'Tombstone', director: 'George Lucas', yearReleased: 1993, streaming: false }
+        { title: 'The Empire Strikes Back', director: 'Irvin Kershner', yearReleased: 1980, streaming: false },
+        { title: 'Return of the Jedi', director: 'Richard Marquand', yearReleased: 1983, streaming: true },
+        { title: 'The Phantom Menace', director: 'George Lucas', yearReleased: 1999, streaming: false },
+        { title: 'Attack of the Clones', director: 'George Lucas', yearReleased: 2002, streaming: true },
+        { title: 'Revenge of the Sith', director: 'George Lucas', yearReleased: 2005, streaming: true },
+        { title: 'The Force Awakens', director: 'J.J. Abrams', yearReleased: 2015, streaming: false },
+        { title: 'The Last Jedi', director: 'Rian Johnson', yearReleased: 2017, streaming: true },
+        { title: 'The Rise of Skywalker', director: 'J.J. Abrams', yearReleased: 2019, streaming: true }
     ];
 }
 function GetReview(title) {
-    if (title === 'A New Hope') {
+    if (title == 'A New Hope') {
         return 'An instant classic!';
     }
     else {
@@ -19,10 +26,8 @@ function GetReview(title) {
 }
 function PrintMovieInfo(movie) {
     console.log(`Title: ${movie.title}`);
+    console.log(`Year Released: ${movie.yearReleased}`);
     console.log(`Director: ${movie.director}`);
-    if (movie.yearReleased) {
-        console.log(`Year Released: ${movie.yearReleased}`);
-    }
 }
 function GetTitles(director, streaming) {
     const allMovies = GetAllMovies();
@@ -43,38 +48,3 @@ function GetTitles(director, streaming) {
     }
     return searchResults;
 }
-;
-function createMovieID(name, id) {
-    return name + id;
-}
-let newID = createMovieID('jedi', 10);
-console.log(newID);
-let myMovie = {
-    title: 'Outlaw Josie Wales',
-    director: 'Serge Leone',
-    yearReleased: 1978,
-    streaming: true,
-    length: 133,
-    logReview: (review) => console.log(`Review: ${review}`)
-};
-/* PrintMovieInfo(myMovie);
-
-if (myMovie.logReview) {
-    myMovie.logReview('Great epic!')
-} */
-let printReview;
-printReview = (review) => console.log(`Viewer review: ${review}`);
-printReview('I want to see it again!!!!!');
-let favoriteCastMember = new classes_1.Performer();
-favoriteCastMember.name = 'Daisy';
-favoriteCastMember.rehearse(25);
-class Library {
-    constructor(name) {
-        this.name = name;
-    }
-}
-Library.description = 'A source of knowledge';
-let result = new Library('Michael');
-console.log(result.name);
-//console.log(result.description);
-console.log(Library.description);

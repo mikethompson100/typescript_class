@@ -86,3 +86,4 @@ function Purge(inventory) {
     return inventory.splice(3, inventory.length);
 }
 exports.Purge = Purge;
+//# sourceMappingURL=functions.js.map

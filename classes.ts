@@ -9,7 +9,7 @@ export class Performer implements CastMember {
   rehearse(sceneNumber: number): void {
     console.log(`${this.name} is rehearsing scene number ${sceneNumber}.`);
   }
-  
+
 }
 
 abstract class Video {

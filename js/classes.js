@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Course = exports.Musical = exports.Documentary = exports.Performer = void 0;
+exports.Favorites = exports.Course = exports.Musical = exports.Documentary = exports.Performer = void 0;
 class Performer {
     constructor() {
         this.name = "";
@@ -62,3 +62,21 @@ class Course extends class {
     }
 }
 exports.Course = Course;
+class Favorites {
+    constructor() {
+        this._items = new Array();
+    }
+    add(item) {
+        this._items.push(item);
+    }
+    getFirst() {
+        return this._items[0];
+    }
+    find(title) {
+        return this._items.filter(item => item.title === title)[0];
+    }
+    printTitles() {
+        this._items.forEach(item => console.log(item.title));
+    }
+}
+exports.Favorites = Favorites;

@@ -1,31 +1,26 @@
 import { Movie, Logger, CastMember as Actor } from "./interfaces";
-import { Performer, Documentary } from "./classes";
+import { Performer, Documentary, Favorites } from "./classes";
 import * as Utility from "./functions";
 
-function getMoviesByDirector(director: string): Promise<string[]> {
+let inventory: Array<Movie> = Utility.GetAllMovies();
 
-  let p: Promise<string[]> = new Promise((resolve, reject) => {
+let favoriteMovies: Favorites<Movie> = new Favorites<Movie>();
+inventory.forEach(movie => favoriteMovies.add(movie));
 
-    setTimeout(() => {
-      let foundMovies: string[] = Utility.GetTitles(director);
+let firstFave: Movie = favoriteMovies.getFirst();
 
-      if(foundMovies.length > 0) {
-        resolve(foundMovies);
-      }
-      else {
-        reject('No movies found for that director.');
-      }
-    }, 2000);
-  });
-  return p;
-}
+let docs: Array<Documentary> = [
+  new Documentary('Baseball', 1994, 'History'),
+  new Documentary('In Pursuit of Flavor', 2022, 'Wine'),
+  new Documentary('Gumbo', 2018, 'Food'),
+];
 
-async function logSearchResults(director: string) {
-  let foundMovies = await getMoviesByDirector(director);
-  console.log(foundMovies);
-}
+let favoriteDocs: Favorites<Documentary> = new Favorites<Documentary>();
+docs.forEach(doc => favoriteDocs.add(doc));
 
-console.log('Beginning search...');
-logSearchResults('George Lucas')
-  .catch(reason => console.log(reason));
-console.log('Search submitted...');
+let firstDoc: Documentary = favoriteDocs.getFirst();
+
+favoriteDocs.printTitles();
+
+let originalMovie = favoriteMovies.find('A New Hope');
+console.log(`${originalMovie.title} - ${originalMovie.yearReleased}`); 

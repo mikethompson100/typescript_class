@@ -22,38 +22,21 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+const classes_1 = require("./classes");
 const Utility = __importStar(require("./functions"));
-function getMoviesByDirector(director) {
-    let p = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            let foundMovies = Utility.GetTitles(director);
-            if (foundMovies.length > 0) {
-                resolve(foundMovies);
-            }
-            else {
-                reject('No movies found for that director.');
-            }
-        }, 2000);
-    });
-    return p;
-}
-function logSearchResults(director) {
-    return __awaiter(this, void 0, void 0, function* () {
-        let foundMovies = yield getMoviesByDirector(director);
-        console.log(foundMovies);
-    });
-}
-console.log('Beginning search...');
-logSearchResults('George Lucas')
-    .catch(reason => console.log(reason));
-console.log('Search submitted...');
+let inventory = Utility.GetAllMovies();
+let favoriteMovies = new classes_1.Favorites();
+inventory.forEach(movie => favoriteMovies.add(movie));
+let firstFave = favoriteMovies.getFirst();
+let docs = [
+    new classes_1.Documentary('Baseball', 1994, 'History'),
+    new classes_1.Documentary('In Pursuit of Flavor', 2022, 'Wine'),
+    new classes_1.Documentary('Gumbo', 2018, 'Food'),
+];
+let favoriteDocs = new classes_1.Favorites();
+docs.forEach(doc => favoriteDocs.add(doc));
+let firstDoc = favoriteDocs.getFirst();
+favoriteDocs.printTitles();
+let originalMovie = favoriteMovies.find('A New Hope');
+console.log(`${originalMovie.title} - ${originalMovie.yearReleased}`);
